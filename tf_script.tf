@@ -1,6 +1,6 @@
 
 provider  "aws"  {
-    region = "ca-central-1b"
+    region = "ca-central-1"
 }
 
 resource "aws_instance" "my_instance" {
