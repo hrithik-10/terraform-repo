@@ -32,7 +32,7 @@ resource "aws_instance" "my_instance" {
     default = "t2.micro"
  }
 
- variable "var.key_name" {
+ variable "key_name" {
   description = "key_pair"
     default = "teraform.ky"
  }
