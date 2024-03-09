@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "aws" {
-    region = var.region
+    region = "ap-south-1"
 }
 
 resource "aws_instance" "my_instance" {
@@ -22,10 +22,8 @@ resource "aws_instance" "my_instance" {
     vpc_security_group_ids = ["sg-0465b2648fc3cac08"]
 
 }
- variable "region" {
-    description = "please enter aws region"
-    default = "ap-south-1a"
- }
+ 
+ 
 
  variable "instance_type" {
     description = "instance_type"
