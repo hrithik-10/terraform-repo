@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
     bucket = "terraform-backup-mumbai"
-    region = "Asia Pacific (Mumbai) ap-south-1"
-    key = "value"
+    region = " ap-south-1"
+    key = "terraform.tfstate"
 
   }
 }
@@ -32,6 +32,6 @@ resource "aws_instance" "my_instance" {
     default = "t2.micro"
  }
 
- variable "var.key_pair" {
+ variable "var.key_name" {
     default = "teraform.ky"
  }
