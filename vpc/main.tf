@@ -53,7 +53,6 @@ resource "aws_default_route_table" "main-rt" {
   default_route_table_id = aws_vpc.my_vpc.default_route_table_id
 
   route {
-    cidr_block = ["0.0.0.0/0"]
     gateway_id = aws_internet_gateway.my-igw.id
   } 
  tags = {
@@ -115,4 +114,7 @@ resource "aws_instance" "instance-2" {
         name = "${var.project}-public-instance"
         env =var.env
     }
+}
+output "public_ip" {
+  value =  aws-instance.instance-2.public_ip
 }
