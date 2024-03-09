@@ -54,7 +54,7 @@ resource "aws_default_route_table" "main-rt" {
   default_route_table_id = aws_vpc.my_vpc.default_route_table_id
 
   route {
-    cidr block = ["0.0.0.0/0"]
+    cidr_block = ["0.0.0.0/0"]
     gateway_id = aws_internet_gateway.my-igw.id
   } 
  tags = {
@@ -73,14 +73,14 @@ ingress {
     protocol = "tcp"
     from_port = 80
     to_port = 80
-    cidr_block ["0.0.0.0/0"]
+    cidr_block = ["0.0.0.0/0"]
 }
 
 ingress {
     protocol = "tcp"
     from_port = 443
     to_port = 443
-    cidr_block ["0.0.0.0/0"]
+    cidr_block = ["0.0.0.0/0"]
 }
  
    egress {
@@ -92,7 +92,7 @@ ingress {
    depends_on = [aws_vpc.my_vpc]
 }
  
- resource " aws_instance" "instance-1" {
+ resource "aws_instance" "instance-1" {
     ami = var.image_id
     instace_type = var.instance_type
     vpc_security_ids = [aws_vpc.my_vpc.default_security_group_id,aws_security_group.sg1.id]
@@ -105,19 +105,8 @@ ingress {
 
  }
 
-resource " aws_instance" "instance-1" {
-    ami = var.image_id
-    instace_type = var.instance_type
-    vpc_security_ids = [aws_vpc.my_vpc.default_security_group_id,aws_security_group.sg1.id]
-    subnet_id = aws_subnet.pri_subnet.id
-    key_name = var.key_pair
-    tags = {
-        name = "${var.project}-private-instance"
-        env =var.env
-    }
-}
 
-resource " aws_instance" "instance-2" {
+resource "aws_instance" "instance-2" {
     ami = var.image_id
     instace_type = var.instance_type
     vpc_security_ids = [aws_vpc.my_vpc.default_security_group_id,aws_security_group.sg1.id]
@@ -127,12 +116,4 @@ resource " aws_instance" "instance-2" {
         name = "${var.project}-public-instance"
         env =var.env
     }
-    userdata = <<EOT
-    #!/bin/bash
-    yum install httpd -y
-    systemctl start httpd
-    systemctl enable httpd
-    echo "<h1>" hello world " > /var/www/html/index.html
-    EOT>>
-    depends_on = [aws_security-group.sg1]
 }
