@@ -1,5 +1,5 @@
 
-provider  "aws"  {
+provider  "aws" {
     region = "ca-central-1"
 }
 
@@ -11,5 +11,5 @@ resource "aws_instance" "my_instance" {
          env = "dev"
          Name = "instance_1"
 }  
-    vpc_security_group_ids  = ["sg-0f75e427e52c76d89"] 
+    vpc_security_group_ids = ["sg-0f75e427e52c76d89"] 
 }
