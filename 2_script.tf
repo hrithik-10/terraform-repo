@@ -24,7 +24,7 @@ resource "aws_instance" "my_instance" {
 }
  variable "region" {
     description = "please enter aws region"
-    default = "ap-south-1"
+    default = "ap-south-1a"
  }
 
  variable "instance_type" {
