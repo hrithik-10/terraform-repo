@@ -115,6 +115,3 @@ resource "aws_instance" "instance-2" {
         env =var.env
     }
 }
-output "public_ip" {
-  value =  aws-instance.instance-2.public_ip
-}
