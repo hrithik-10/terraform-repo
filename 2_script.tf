@@ -11,10 +11,10 @@ provider aws {
     region = var.region
 }
 
-resource "aws instance" "my_instance" {
+resource "aws_instance" "my_instance" {
     ami = "ami-0e670eb768a5fc3d4"
     instance_type = var.instance_type
-    key_name = "var.key"
+    key_name = var.key_name
     tags = {
         env = "dev"
         Name = "instance-2"
@@ -23,7 +23,7 @@ resource "aws instance" "my_instance" {
 
 }
  variable "region" {
-    description = "please entervaws region"
+    description = "please enter aws region"
     default = "ap-south-1"
  }
 
@@ -32,6 +32,6 @@ resource "aws instance" "my_instance" {
     default = "t2.micro"
  }
 
- variable "var.key" {
+ variable "var.key_pair" {
     default = "teraform.ky"
  }
