@@ -33,5 +33,6 @@ resource "aws_instance" "my_instance" {
  }
 
  variable "var.key_name" {
+  description = "key_pair"
     default = "teraform.ky"
  }
