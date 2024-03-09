@@ -3,7 +3,7 @@ variable "region" {
 }
 
 variable "az1" {
-  default = "ap-south-1a"
+  default = ["ap-south-1a"]
 }
 variable "vpc_name" {
   default = "cbz-vpc"
