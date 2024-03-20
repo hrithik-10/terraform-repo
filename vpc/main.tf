@@ -1,13 +1,13 @@
 terraform {
   backend "s3" {
-    bucket = "terraform-backup-mumbai"
+    bucket = "tf-backend-file"
     region = "ap-south-1"
     key    = "terraform.tfstate"
   }
 }
 
 provider "aws" {
-  region = var.region
+  region = "ap-south-1"
 }
 
 resource "aws_vpc" "my_vpc" {
